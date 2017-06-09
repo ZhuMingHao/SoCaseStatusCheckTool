@@ -67,10 +67,10 @@
             </controls:PageHeader.SecondaryCommands>
         </controls:PageHeader>
 
-        <TextBox Grid.Row="1" Grid.Column="0" PlaceholderText="Please in put your alias" Margin="10" />
+        <TextBox Grid.Row="1" Grid.Column="0" PlaceholderText="Please in put your alias" Margin="10" Text="{x:Bind ViewModel.Alias,Mode=TwoWay}" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" >
-            <CalendarDatePicker  PlaceholderText="Please start time" Margin="10" />
+            <CalendarDatePicker  PlaceholderText="Please start time" Margin="10"  />
             <Rectangle Width="9" Fill="Black" Height="3" StrokeThickness="3"/>
             <CalendarDatePicker  PlaceholderText="Please end time" Margin="10" />
         </StackPanel>

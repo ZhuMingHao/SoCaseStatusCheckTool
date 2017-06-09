@@ -47,7 +47,7 @@ namespace SoCaseStatusCheckTool.ViewModels
             await Task.CompletedTask;
         }
 
-        APIService _api = new APIService();
+        private APIService _api = new APIService();
         private SoCase SelectItem;
 
         private ObservableCollection<SoCase> _cases;
@@ -90,6 +90,17 @@ namespace SoCaseStatusCheckTool.ViewModels
             }
         }
 
+        private string _alias;
+        public string Alias
+        {
+            get { return _alias; }
+            set { Set(ref _alias, value); }
+        }
+        private DateTime _startTime;
+        public DateTime StartTime { get { return _startTime; } set { Set(ref _startTime, value); } }
+        private DateTime _endTime;
+        public DateTime EndTime { get { return _endTime; } set { Set(ref _endTime, value); } }
+
         private async void GetSoCasesData()
         {
             IsLoading = true;
@@ -99,7 +110,6 @@ namespace SoCaseStatusCheckTool.ViewModels
             if (list != null)
             {
                 Cases = new ObservableCollection<SoCase>();
-                ///
                 list.ForEach(
                     (temp) => { Cases.Add(temp); });
                 SelectedIndex = 0;
@@ -126,12 +136,20 @@ namespace SoCaseStatusCheckTool.ViewModels
             MenuFlyout myFlyout = new MenuFlyout();
             MenuFlyoutItem firstItem = new MenuFlyoutItem { Text = "Copy ID" };
             MenuFlyoutItem secondItem = new MenuFlyoutItem { Text = "Copy URL" };
+            MenuFlyoutItem thirdItem = new MenuFlyoutItem { Text = "Open in the browser" };
             firstItem.Click += FirstItem_Click;
             secondItem.Click += SecondItem_Click;
+            thirdItem.Click += ThirdItem_Click;
             myFlyout.Items.Add(firstItem);
             myFlyout.Items.Add(secondItem);
+            myFlyout.Items.Add(thirdItem);
             SelectItem = ((FrameworkElement)e.OriginalSource).DataContext as SoCase;
             myFlyout.ShowAt(sender as UIElement, e.GetPosition(sender as UIElement));
+
+        }
+
+        private void ThirdItem_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 
