@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SoCaseStatusCheck.Core.Https
 {
-   public static class ServiceURL
+    public static class ServiceURL
     {
-        public static string Themes = "http://news-at.zhihu.com/api/4/themes";
+        public static string SOCaseAPI = "http://news-at.zhihu.com/api/4/themes";
     }
 }
