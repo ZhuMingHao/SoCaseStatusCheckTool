@@ -16,6 +16,5 @@ namespace SoCaseStatusCheck.Core.Models
     {
         Delete = 0,
         Normal,
-
     }
 }

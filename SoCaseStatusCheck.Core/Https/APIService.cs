@@ -17,7 +17,12 @@ namespace SoCaseStatusCheck.Core.Https
             {
                 if (NetworkManager.Current.Network == 4)  //无网络连接
                 {
-                    List<SoCase> list = await FileHelper.Current.ReadObjectAsync<List<SoCase>>("themes.json");
+                    List<SoCase> list = new List<SoCase>();
+                    for (var i = 0; i < 100; i++)
+                    {
+                        list.Add(new SoCase() { ID = i.ToString(), Statue = CaseStatue.Normal, Title = "ZhuMingHao....." });
+                    }
+
                     return list;
                 }
                 else
@@ -34,7 +39,7 @@ namespace SoCaseStatusCheck.Core.Https
                                 JsonArray ja = subscribed.GetArray();
                                 foreach (var j in ja)
                                 {
-                                    list.Add(new SoCase { ID = (j.GetObject())["id"].GetNumber().ToString(), Title = (j.GetObject())["name"].GetString(), Description = (j.GetObject())["description"].GetString(), Thumbnail = (j.GetObject())["thumbnail"].GetString() });
+                                    //  list.Add(new SoCase { ID = (j.GetObject())["id"].GetNumber().ToString(), Title = (j.GetObject())["name"].GetString(), Description = (j.GetObject())["description"].GetString(), Thumbnail = (j.GetObject())["thumbnail"].GetString() });
                                 }
                             }
                         }
@@ -44,7 +49,7 @@ namespace SoCaseStatusCheck.Core.Https
                             JsonArray ja = others.GetArray();
                             foreach (var j in ja)
                             {
-                                list.Add(new SoCase { ID = (j.GetObject())["id"].GetNumber().ToString(), Title = (j.GetObject())["name"].GetString(), Description = (j.GetObject())["description"].GetString(), Thumbnail = (j.GetObject())["thumbnail"].GetString() });
+                                //  list.Add(new SoCase { ID = (j.GetObject())["id"].GetNumber().ToString(), Title = (j.GetObject())["name"].GetString(), Description = (j.GetObject())["description"].GetString(), Thumbnail = (j.GetObject())["thumbnail"].GetString() });
                             }
                         }
                         await FileHelper.Current.WriteObjectAsync<List<SoCase>>(list, "themes.json");

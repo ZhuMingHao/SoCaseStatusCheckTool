@@ -112,11 +112,10 @@
     <Compile Include="Https\ServiceURL.cs" />
     <Compile Include="Models\SoCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Clip.cs" />
     <Compile Include="Tools\DispatcherManager.cs" />
     <Compile Include="Tools\FileHelper.cs" />
     <Compile Include="Tools\NetworkManager.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\SoCaseStatusCheck.Core.rd.xml" />
   </ItemGroup>
   <ItemGroup>
